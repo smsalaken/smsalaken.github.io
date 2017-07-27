@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/css/poole-overrides.css">
   <link rel="stylesheet" href="/css/hyde-overrides.css">
   <link rel="stylesheet" href="/css/hyde-x.css">
-  <link rel="stylesheet" href="/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="/css/highlight/monokai.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
@@ -86,21 +86,26 @@
 <p>You can see the full discussion here. <a href="https://stackoverflow.com/a/3101876/7860688" class="uri">https://stackoverflow.com/a/3101876/7860688</a></p>
 <p>But, if you are not the one deciding what kind of graphs to build or do not want to lecture your client about plotting theory, here is a neat trick you can you.</p>
 <pre class="r"><code># having a fill is important for bar and area if you want legends
-p1 &lt;- ggplot(df_processed_Gen, aes(x = FYE, y = SumGen, fill = &quot;#4B92DB&quot;)) +   
-  geom_bar(stat = &#39;identity&#39;) +                                                
-  labs(x=&quot;FYE&quot;, y=&quot;Sum of Generation&quot;) +                                       
-  scale_fill_identity(name=&quot;&quot;, guide=&quot;legend&quot;, labels=c(&quot;sum(generation)&quot;)) +
-  theme(legend.position=&quot;bottom&quot;) +
-  ggtitle(&#39;Generator and CF information&#39;)
+# If you don&#39;t get legends in the final plot after grid.draw(),
+# check if you are getting legends in p1 and p2 independently
+p1 &lt;- ggplot(df_processed_Gen, 
+              aes(x = FYE, y = SumGen, fill = &quot;#4B92DB&quot;)) + 
+              geom_bar(stat = &#39;identity&#39;) + 
+              labs(x=&quot;FYE&quot;, y=&quot;Sum of Generation&quot;) +
+              scale_fill_identity(name=&quot;&quot;, guide=&quot;legend&quot;,
+                                  labels=c(&quot;sum(generation)&quot;)) +
+              theme(legend.position=&quot;bottom&quot;) +
+              ggtitle(&#39;Generator and CF information&#39;)
 
 
-p2 &lt;- ggplot(df_processed_CF, aes(x = FYE, y = SumCF, colour = &#39;sum(CF)&#39;)) + 
-  geom_line(stat = &#39;identity&#39;) + 
-  labs(x=&quot;FYE&quot;, y=&quot;Sum of Capacity Factor&quot;) +
-  theme_few() %+replace% 
-  theme(panel.background = element_rect(fill = NA)) +
-  theme(legend.position=&quot;bottom&quot;,
-        legend.title=element_blank())
+p2 &lt;- ggplot(df_processed_CF, 
+              aes(x = FYE, y = SumCF, colour = &#39;sum(CF)&#39;)) + 
+              geom_line(stat = &#39;identity&#39;) + 
+              labs(x=&quot;FYE&quot;, y=&quot;Sum of Capacity Factor&quot;) +
+              theme_few() %+replace% 
+              theme(panel.background = element_rect(fill = NA)) +
+              theme(legend.position=&quot;bottom&quot;,
+                    legend.title=element_blank())
 
 # hack for ggplots as it does not support dual axis
 # due it the conpect being inherently flawed in plotting thoery
@@ -117,37 +122,56 @@ g2 &lt;- ggplot_gtable(ggplot_build(p2))
 
 # overlap the panel of 2nd plot on that of 1st plot
 pp &lt;- c(subset(g1$layout, name == &quot;panel&quot;, se = t:r))
-g &lt;- gtable_add_grob(g1, g2$grobs[[which(g2$layout$name == &quot;panel&quot;)]], pp$t, 
-                     pp$l, pp$b, pp$l)
+g &lt;- gtable_add_grob(g1, 
+                     g2$grobs[[which(g2$layout$name == &quot;panel&quot;)]], 
+                     pp$t, pp$l, pp$b, pp$l)
 
 # axis tweaks
-ia &lt;- which(g2$layout$name == &quot;axis-l&quot;)   # depending on platform, this may change.
-ga &lt;- g2$grobs[[ia]]                      # use print(g$layout) to find the correct one
+# depending on platform, layut name may change.
+# use print(g$layout) to find the correct one
+
+ia &lt;- which(g2$layout$name == &quot;axis-l&quot;)   
+ga &lt;- g2$grobs[[ia]]                      
 ax &lt;- ga$children[[2]]
 ax$widths &lt;- rev(ax$widths)
 ax$grobs &lt;- rev(ax$grobs)
 ax$grobs[[1]]$x &lt;- ax$grobs[[1]]$x - unit(1, &quot;npc&quot;) + unit(0.15, &quot;cm&quot;)
-g &lt;- gtable_add_cols(g, g2$widths[g2$layout[ia, ]$l], length(g$widths) - 1)
+
+g &lt;- gtable_add_cols(g, 
+                     g2$widths[g2$layout[ia, ]$l], 
+                     length(g$widths) - 1)
+
 g &lt;- gtable_add_grob(g, ax, pp$t, length(g$widths) - 1, pp$b)
 
-
-ia2 &lt;- which(g2$layout$name == &quot;ylab&quot;)   # depending on platform, this may change.
-ga2 &lt;- g2$grobs[[ia2]]                   # use print(g$layout) to find the correct one
+# depending on platform, this may change.
+# use print(g$layout) to find the correct one
+ia2 &lt;- which(g2$layout$name == &quot;ylab&quot;)   
+ga2 &lt;- g2$grobs[[ia2]]                   
 ga2$rot &lt;- 90
-g &lt;- gtable_add_cols(g, g2$widths[g2$layout[ia2, ]$l], length(g$widths) - 1)
-g &lt;- gtable_add_grob(g, ga2, pp$t, length(g$widths) - 1, pp$b)
+
+g &lt;- gtable_add_cols(g, 
+                     g2$widths[g2$layout[ia2, ]$l], 
+                     length(g$widths) - 1)
+
+g &lt;- gtable_add_grob(g, ga2, 
+                     pp$t, 
+                     length(g$widths) - 1, 
+                     pp$b)
 
 
 # Extract legend. 
 # Legends may not be present if they are not produced from ggplot() in p1 and p2
-# In that case, go back and edit your ggplot to produce legends. Otherwise, omit the following.   
+# In that case, go back and edit your ggplot to produce legends. 
+# Otherwise, omit the following.   
 leg1 &lt;- g1$grobs[[which(g1$layout$name == &quot;guide-box&quot;)]]
 leg2 &lt;- g2$grobs[[which(g2$layout$name == &quot;guide-box&quot;)]]
 
-g$grobs[[which(g$layout$name == &quot;guide-box&quot;)]] &lt;- gtable:::cbind_gtable(leg1, leg2, &quot;first&quot;)
+g$grobs[[which(g$layout$name == &quot;guide-box&quot;)]] &lt;- 
+  gtable:::cbind_gtable(leg1, leg2, &quot;first&quot;)
 
 
-# g is the grob that should be used to draw the plot. We need grid package for that.
+# g is the grob that should be used to draw the plot. 
+# We need grid package for that.
 library(grid)
 grid.newpage()
 grid.draw(g)

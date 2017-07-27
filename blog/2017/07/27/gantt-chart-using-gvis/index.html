@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="/css/poole-overrides.css">
   <link rel="stylesheet" href="/css/hyde-overrides.css">
   <link rel="stylesheet" href="/css/hyde-x.css">
-  <link rel="stylesheet" href="/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="/css/highlight/monokai.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
@@ -81,13 +81,15 @@
 <pre class="r"><code># get the data
 df &lt;- data_get() # make sure you get the data here
 
-
-
 # convert time to decimal hours, remove if not required
 df$start.ct   &lt;- as.POSIXct(paste(df$`Date Time`, df$start, sep = &quot; &quot;))
 df$end.ct     &lt;- as.POSIXct(paste(df$`Date Time`, df$end, sep = &quot; &quot;))
-df$start.hour &lt;- as.POSIXlt(df$start.ct)$hour + as.POSIXlt(df$start.ct)$min/60 + as.POSIXlt(df$start.ct)$sec/3600
-df$end.hour   &lt;- as.POSIXlt(df$end.ct)$hour + as.POSIXlt(df$end.ct)$min/60 + as.POSIXlt(df$end.ct)$sec/3600
+df$start.hour &lt;- as.POSIXlt(df$start.ct)$hour + 
+                    as.POSIXlt(df$start.ct)$min/60 + 
+                    as.POSIXlt(df$start.ct)$sec/3600
+df$end.hour   &lt;- as.POSIXlt(df$end.ct)$hour + 
+                    as.POSIXlt(df$end.ct)$min/60 + 
+                    as.POSIXlt(df$end.ct)$sec/3600
 
 # do this if your start time and end time is same in the df
 # add one hour to start time if this is hourly, remove if needed
@@ -95,7 +97,7 @@ df$endTime &lt;- df$start.ct+3600
 
 library(googleVis)
 datTL &lt;- data.frame(Position=&#39;&#39;,            # bar labels
-                    Name=df$`Child Object`, # the row label for Gantt charts
+                    Name=df$`Child Object`, # row labels
                     start=df$start.ct,      # the start time
                     end=df$endTime)         # the end time
 
@@ -107,15 +109,16 @@ Timeline &lt;-
     barlabel=&quot;Position&quot;,
     start=&quot;start&quot;, 
     end=&quot;end&quot;,
-    options=list(timeline=&quot;{groupByRowLabel:true}&quot;,  # one row for one label
+    options=list(timeline=&quot;{groupByRowLabel:true}&quot;,  # one row per label
                 width=&#39;100%&#39;,                        
                 height=700,                          
                 backgroundColor=&#39;#ffd&#39;, 
                 height=350,
-                colors=&quot;[&#39;#cbb69d&#39;, &#39;#603913&#39;, &#39;#c69c6e&#39;]&quot;))  # what colors do you want on the chart?
+                colors=&quot;[&#39;#cbb69d&#39;, &#39;#603913&#39;, &#39;#c69c6e&#39;]&quot;))  # colors to be used
 
 # testing the code
-cat(&#39;class Timeline:&#39;, class(Timeline),&#39;\n&#39;)         # It should be a gvis class</code></pre>
+# It should be a gvis class
+cat(&#39;class Timeline:&#39;, class(Timeline),&#39;\n&#39;)         </code></pre>
 
   </div>
   

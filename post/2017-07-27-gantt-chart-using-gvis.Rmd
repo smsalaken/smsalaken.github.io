@@ -19,13 +19,15 @@ Google.
 # get the data
 df <- data_get() # make sure you get the data here
 
-
-
 # convert time to decimal hours, remove if not required
 df$start.ct   <- as.POSIXct(paste(df$`Date Time`, df$start, sep = " "))
 df$end.ct     <- as.POSIXct(paste(df$`Date Time`, df$end, sep = " "))
-df$start.hour <- as.POSIXlt(df$start.ct)$hour + as.POSIXlt(df$start.ct)$min/60 + as.POSIXlt(df$start.ct)$sec/3600
-df$end.hour   <- as.POSIXlt(df$end.ct)$hour + as.POSIXlt(df$end.ct)$min/60 + as.POSIXlt(df$end.ct)$sec/3600
+df$start.hour <- as.POSIXlt(df$start.ct)$hour + 
+                    as.POSIXlt(df$start.ct)$min/60 + 
+                    as.POSIXlt(df$start.ct)$sec/3600
+df$end.hour   <- as.POSIXlt(df$end.ct)$hour + 
+                    as.POSIXlt(df$end.ct)$min/60 + 
+                    as.POSIXlt(df$end.ct)$sec/3600
 
 # do this if your start time and end time is same in the df
 # add one hour to start time if this is hourly, remove if needed
@@ -33,7 +35,7 @@ df$endTime <- df$start.ct+3600
 
 library(googleVis)
 datTL <- data.frame(Position='',            # bar labels
-                    Name=df$`Child Object`, # the row label for Gantt charts
+                    Name=df$`Child Object`, # row labels
                     start=df$start.ct,      # the start time
                     end=df$endTime)         # the end time
 
@@ -45,13 +47,14 @@ Timeline <-
     barlabel="Position",
     start="start", 
     end="end",
-    options=list(timeline="{groupByRowLabel:true}",  # one row for one label
+    options=list(timeline="{groupByRowLabel:true}",  # one row per label
                 width='100%',                        
                 height=700,                          
                 backgroundColor='#ffd', 
                 height=350,
-                colors="['#cbb69d', '#603913', '#c69c6e']"))  # what colors do you want on the chart?
+                colors="['#cbb69d', '#603913', '#c69c6e']"))  # colors to be used
 
 # testing the code
-cat('class Timeline:', class(Timeline),'\n')         # It should be a gvis class
+# It should be a gvis class
+cat('class Timeline:', class(Timeline),'\n')         
 ```
