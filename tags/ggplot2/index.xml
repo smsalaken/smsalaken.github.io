@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ggplot2 on Salekin Mushfik</title>
-    <link>/smsalaken.github.io/tags/ggplot2/</link>
+    <link>/tags/ggplot2/</link>
     <description>Recent content in Ggplot2 on Salekin Mushfik</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 27 Jul 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/smsalaken.github.io/tags/ggplot2/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/ggplot2/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Dual y-axis in ggplot</title>
-      <link>/smsalaken.github.io/2017/07/27/dual-y-axis-in-ggplot/</link>
+      <link>/2017/07/27/dual-y-axis-in-ggplot/</link>
       <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>/smsalaken.github.io/2017/07/27/dual-y-axis-in-ggplot/</guid>
+      <guid>/2017/07/27/dual-y-axis-in-ggplot/</guid>
       <description>Double vertical axis is a fairly common requirement by the analysts. They often use plots with double y-axis to visualize two different variables where x-axis is common to both of them. While ggplot supports most type of graph, this particular kind is not supported. Hadley believes this type of graphs are fundamentally flawed and even went as far as saying he will never build such a graph in ggplot2 package because:</description>
     </item>
     

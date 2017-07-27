@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Salekin Mushfik</title>
-    <link>/smsalaken.github.io/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on Salekin Mushfik</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 27 Jul 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/smsalaken.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Ggplot2</title>
-      <link>/smsalaken.github.io/tags/ggplot2/</link>
+      <link>/tags/ggplot2/</link>
       <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>/smsalaken.github.io/tags/ggplot2/</guid>
+      <guid>/tags/ggplot2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Gvis</title>
-      <link>/smsalaken.github.io/tags/gvis/</link>
+      <link>/tags/gvis/</link>
       <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>/smsalaken.github.io/tags/gvis/</guid>
+      <guid>/tags/gvis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>/smsalaken.github.io/tags/r/</link>
+      <link>/tags/r/</link>
       <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>/smsalaken.github.io/tags/r/</guid>
+      <guid>/tags/r/</guid>
       <description></description>
     </item>
     
