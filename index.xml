@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Salekin Mushfik</title>
-    <link>/</link>
+    <link>/smsalaken.github.io/</link>
     <description>Recent content on Salekin Mushfik</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 27 Jul 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/smsalaken.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Dual y-axis in ggplot</title>
-      <link>/2017/07/27/dual-y-axis-in-ggplot/</link>
+      <link>/smsalaken.github.io/2017/07/27/dual-y-axis-in-ggplot/</link>
       <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>/2017/07/27/dual-y-axis-in-ggplot/</guid>
+      <guid>/smsalaken.github.io/2017/07/27/dual-y-axis-in-ggplot/</guid>
       <description>Double vertical axis is a fairly common requirement by the analysts. They often use plots with double y-axis to visualize two different variables where x-axis is common to both of them. While ggplot supports most type of graph, this particular kind is not supported. Hadley believes this type of graphs are fundamentally flawed and even went as far as saying he will never build such a graph in ggplot2 package because:</description>
     </item>
     
     <item>
       <title>Gantt chart using Gvis</title>
-      <link>/2017/07/27/gantt-chart-using-gvis/</link>
+      <link>/smsalaken.github.io/2017/07/27/gantt-chart-using-gvis/</link>
       <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>/2017/07/27/gantt-chart-using-gvis/</guid>
+      <guid>/smsalaken.github.io/2017/07/27/gantt-chart-using-gvis/</guid>
       <description>Gantt chart can be very useful to visualize the occurance of certain events on a timeline. If you need create one programmetically, you can use gvis package which utilizes plotting library from Google.
 # get the datadf &amp;lt;- data_get() # make sure you get the data here# convert time to decimal hours, remove if not requireddf$start.ct &amp;lt;- as.POSIXct(paste(df$`Date Time`, df$start, sep = &amp;quot; &amp;quot;))df$end.ct &amp;lt;- as.POSIXct(paste(df$`Date Time`, df$end, sep = &amp;quot; &amp;quot;))df$start.</description>
     </item>
     
     <item>
       <title>About</title>
-      <link>/about/</link>
+      <link>/smsalaken.github.io/about/</link>
       <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
       
-      <guid>/about/</guid>
+      <guid>/smsalaken.github.io/about/</guid>
       <description>This is a &amp;ldquo;hello world&amp;rdquo; example website for the blogdown package. The theme was forked from @jrutheiser/hugo-lithium-theme and modified by Yihui Xie.</description>
     </item>
     
