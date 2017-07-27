@@ -4,21 +4,16 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <meta name="description" content="">
-    <meta property="og:title" content="Gantt chart using Gvis">
+    <meta property="og:title" content="R">
     
-    <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2017-07-27">
+    <meta property="og:type" content="website">
     
     <meta property="og:description" content="">
-    <meta property="og:url" content="/smsalaken.github.io/2017/07/27/gantt-chart-using-gvis/">
+    <meta property="og:url" content="/smsalaken.github.io/tags/r/">
     <meta property="og:site_name" content="Salekin Mushfik">
     
-    <meta property="og:tags" content="gvis">
-    
-    <meta property="og:tags" content="r">
-    
     <meta name="generator" content="Hugo 0.25.1" />
-    <title>Gantt chart using Gvis &middot; Salekin Mushfik</title>
+    <title>R &middot; Salekin Mushfik</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
@@ -91,60 +86,16 @@
 			<div class="row">
 				<div id="post" class="col-sm-offset-1 col-sm-10 col-md-10 col-lg-8">
 
-<main>
+<article>
 	<header>
-		<h1>Gantt chart using Gvis</h1>
+		<h1>R</a></h1>
 	</header>
-
-	<article>
-		<p>Gantt chart can be very useful to visualize the occurance of certain events on a timeline. If you need create one programmetically, you can use gvis package which utilizes plotting library from Google.</p>
-<pre class="r"><code># get the data
-df &lt;- data_get() # make sure you get the data here
-
-
-
-# convert time to decimal hours, remove if not required
-df$start.ct   &lt;- as.POSIXct(paste(df$`Date Time`, df$start, sep = &quot; &quot;))
-df$end.ct     &lt;- as.POSIXct(paste(df$`Date Time`, df$end, sep = &quot; &quot;))
-df$start.hour &lt;- as.POSIXlt(df$start.ct)$hour + as.POSIXlt(df$start.ct)$min/60 + as.POSIXlt(df$start.ct)$sec/3600
-df$end.hour   &lt;- as.POSIXlt(df$end.ct)$hour + as.POSIXlt(df$end.ct)$min/60 + as.POSIXlt(df$end.ct)$sec/3600
-
-# do this if your start time and end time is same in the df
-# add one hour to start time if this is hourly, remove if needed
-df$endTime &lt;- df$start.ct+3600              
-
-library(googleVis)
-datTL &lt;- data.frame(Position=&#39;&#39;,            # bar labels
-                    Name=df$`Child Object`, # the row label for Gantt charts
-                    start=df$start.ct,      # the start time
-                    end=df$endTime)         # the end time
-
-# the actual Gantt chart. If using in shiny, render via renderGvis
-Timeline &lt;- 
-  gvisTimeline(
-    data=datTL, 
-    rowlabel=&quot;Name&quot;,
-    barlabel=&quot;Position&quot;,
-    start=&quot;start&quot;, 
-    end=&quot;end&quot;,
-    options=list(timeline=&quot;{groupByRowLabel:true}&quot;,  # one row for one label
-                width=&#39;100%&#39;,                        
-                height=700,                          
-                backgroundColor=&#39;#ffd&#39;, 
-                height=350,
-                colors=&quot;[&#39;#cbb69d&#39;, &#39;#603913&#39;, &#39;#c69c6e&#39;]&quot;))  # what colors do you want on the chart?
-
-# testing the code
-cat(&#39;class Timeline:&#39;, class(Timeline),&#39;\n&#39;)         # It should be a gvis class</code></pre>
-
-	</article>
-</main>
-
-<div id="bottom-nav" class="text-center center-block">
-	<a href=" /smsalaken.github.io" class="btn btn-default"><i class="fa fa-home"></i> Home</a>
-</div>
-
-
+<ul>
+	
+	<li><a href="/smsalaken.github.io/2017/07/27/gantt-chart-using-gvis/">Gantt chart using Gvis</a></li>
+	
+</ul>
+</article>
 
 						</div>
 					</div>
