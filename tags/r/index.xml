@@ -1,25 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>R on Salekin Mushfik</title>
-    <link>/tags/r/</link>
-    <description>Recent content in R on Salekin Mushfik</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 27 Jul 2017 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Gantt chart using Gvis</title>
-      <link>/2017/07/27/gantt-chart-using-gvis/</link>
-      <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/2017/07/27/gantt-chart-using-gvis/</guid>
-      <description>Gantt chart can be very useful to visualize the occurance of certain events on a timeline. If you need create one programmetically, you can use gvis package which utilizes plotting library from Google.
-# get the datadf &amp;lt;- data_get() # make sure you get the data here# convert time to decimal hours, remove if not requireddf$start.ct &amp;lt;- as.POSIXct(paste(df$`Date Time`, df$start, sep = &amp;quot; &amp;quot;))df$end.ct &amp;lt;- as.POSIXct(paste(df$`Date Time`, df$end, sep = &amp;quot; &amp;quot;))df$start.</description>
-    </item>
-    
-  </channel>
-</rss>

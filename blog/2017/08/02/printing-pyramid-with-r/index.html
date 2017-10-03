@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>Posts &middot; Salekin Mushfik</title>
+  <title>Printing pyramid with R &middot; Salekin Mushfik</title>
 
   
   <link rel="stylesheet" href="http://smsalaken.github.io/css/poole.css">
@@ -27,7 +27,7 @@
   
   
   
-  <link href="http://smsalaken.github.io/post/index.xml" rel="alternate" type="application/rss+xml" title="Salekin Mushfik &middot; Salekin Mushfik" />
+  
 
   <meta name="description" content="Random things on data science and machine learning by Salekin Mushfik">
   <meta name="keywords" content="Salekin,Data Scientist in Melbourne,Machine learning,Data Engineer in Melbourne, Australia">
@@ -70,31 +70,48 @@
 
 
 <div class="content container">
-  <ul class="posts">
-  
-    <li><a href="http://smsalaken.github.io/blog/2017/08/02/printing-pyramid-with-r/">Printing pyramid with R</a>
+  <div class="post">
+    <h1 class="post-title">Printing pyramid with R</h1>
+    <span class="post-date">Aug 2, 2017 &middot; 2 minute read
     
-    &middot;
+    <br/>
     <a class="label" href="http://smsalaken.github.io/categories/interview">interview</a>
     </span>
-    &middot; <time>Aug 2, 2017</time></li>
-  
-    <li><a href="http://smsalaken.github.io/blog/2017/07/27/dual-y-axis-in-ggplot/">Dual y-axis in ggplot</a>
+    <p>I recently attended an interview where one of the programming questions asked to solve a very basic programming problem. The target of questions like these is not to see if you can write the most efficient code, but to see how you approach the problem. This particular question asked to print a pyramid of stars for a given depth.</p>
+<p>Below is a code to achieve this output in <code>r</code>. This is not the most efficient code, but it shows a simple method. Since I decided to document interview questions like this, I am posting it here.</p>
+<pre class="r"><code>###########################################
+###    print a pyramid of stars  ##########
+###########################################
+
+# determine the depth of pyramid
+n &lt;- 8
+
+for (i in seq(1,n)){
+  # if the depth is meaningless, return empty space
+  if(n &lt; 1) {
+    print(&#39;&#39;)
+  }else {
+    # otherwise, print the pyramid
+    print(c(rep(&#39;&#39;, n-i),rep(c(&#39;*&#39;,&#39;&#39;), i)))
+      }
     
-    &middot;
-    <a class="label" href="http://smsalaken.github.io/categories/visualization">visualization</a>
-    </span>
-    &middot; <time>Jul 27, 2017</time></li>
+  }</code></pre>
+<pre><code>## [1] &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;*&quot; &quot;&quot; 
+##  [1] &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot; 
+##  [1] &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot; 
+##  [1] &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot; 
+##  [1] &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot; 
+##  [1] &quot;&quot;  &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot; 
+##  [1] &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot; 
+##  [1] &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;</code></pre>
+
+  </div>
   
-    <li><a href="http://smsalaken.github.io/blog/2017/07/27/gantt-chart-using-gvis/">Gantt chart using Gvis</a>
-    
-    &middot;
-    <a class="label" href="http://smsalaken.github.io/categories/visualization">visualization</a>
-    </span>
-    &middot; <time>Jul 27, 2017</time></li>
-  
-  </ul>
 </div>
+
+
+
+
 <script src="http://smsalaken.github.io/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 </body>
