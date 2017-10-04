@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Interview on Salekin Mushfik</title>
-    <link>http://smsalaken.github.io/categories/interview/</link>
+    <link>/categories/interview/</link>
     <description>Recent content in Interview on Salekin Mushfik</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 02 Aug 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://smsalaken.github.io/categories/interview/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/interview/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Printing pyramid with R</title>
-      <link>http://smsalaken.github.io/blog/2017/08/02/printing-pyramid-with-r/</link>
+      <link>/blog/2017/08/02/printing-pyramid-with-r/</link>
       <pubDate>Wed, 02 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://smsalaken.github.io/blog/2017/08/02/printing-pyramid-with-r/</guid>
+      <guid>/blog/2017/08/02/printing-pyramid-with-r/</guid>
       <description>I recently attended an interview where one of the programming questions asked to solve a very basic programming problem. The target of questions like these is not to see if you can write the most efficient code, but to see how you approach the problem. This particular question asked to print a pyramid of stars for a given depth.
 Below is a code to achieve this output in r. This is not the most efficient code, but it shows a simple method.</description>
     </item>

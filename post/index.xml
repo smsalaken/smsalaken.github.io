@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Salekin Mushfik</title>
-    <link>http://smsalaken.github.io/post/</link>
+    <link>/post/</link>
     <description>Recent content in Posts on Salekin Mushfik</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 02 Aug 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://smsalaken.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Printing pyramid with R</title>
-      <link>http://smsalaken.github.io/blog/2017/08/02/printing-pyramid-with-r/</link>
+      <link>/blog/2017/08/02/printing-pyramid-with-r/</link>
       <pubDate>Wed, 02 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://smsalaken.github.io/blog/2017/08/02/printing-pyramid-with-r/</guid>
+      <guid>/blog/2017/08/02/printing-pyramid-with-r/</guid>
       <description>I recently attended an interview where one of the programming questions asked to solve a very basic programming problem. The target of questions like these is not to see if you can write the most efficient code, but to see how you approach the problem. This particular question asked to print a pyramid of stars for a given depth.
 Below is a code to achieve this output in r. This is not the most efficient code, but it shows a simple method.</description>
     </item>
     
     <item>
       <title>Dual y-axis in ggplot</title>
-      <link>http://smsalaken.github.io/blog/2017/07/27/dual-y-axis-in-ggplot/</link>
+      <link>/blog/2017/07/27/dual-y-axis-in-ggplot/</link>
       <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://smsalaken.github.io/blog/2017/07/27/dual-y-axis-in-ggplot/</guid>
+      <guid>/blog/2017/07/27/dual-y-axis-in-ggplot/</guid>
       <description>Double vertical axis is a fairly common requirement by the analysts. They often use plots with double y-axis to visualize two different variables where x-axis is common to both of them. While ggplot supports most type of graph, this particular kind is not supported. Hadley believes this type of graphs are fundamentally flawed and even went as far as saying he will never build such a graph in ggplot2 package because:</description>
     </item>
     
     <item>
       <title>Gantt chart using Gvis</title>
-      <link>http://smsalaken.github.io/blog/2017/07/27/gantt-chart-using-gvis/</link>
+      <link>/blog/2017/07/27/gantt-chart-using-gvis/</link>
       <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://smsalaken.github.io/blog/2017/07/27/gantt-chart-using-gvis/</guid>
+      <guid>/blog/2017/07/27/gantt-chart-using-gvis/</guid>
       <description>Gantt chart can be very useful to visualize the occurance of certain events on a timeline. If you need create one programmetically, you can use gvis package which utilizes plotting library from Google.
 # get the data df &amp;lt;- data_get() # make sure you get the data here # convert time to decimal hours, remove if not required df$start.ct &amp;lt;- as.POSIXct(paste(df$`Date Time`, df$start, sep = &amp;quot; &amp;quot;)) df$end.ct &amp;lt;- as.POSIXct(paste(df$`Date Time`, df$end, sep = &amp;quot; &amp;quot;)) df$start.</description>
     </item>
