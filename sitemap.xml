@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/blog/2017/10/04/decision-diagram-for-aws-storage-and-database/</loc>
+    <lastmod>2017-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/2017/10/04/setting-up-a-cron-job-in-google-app-engine-to-periodically-load-data-into-bigquery/</loc>
     <lastmod>2017-10-04T00:00:00+00:00</lastmod>
   </url>
@@ -23,7 +28,14 @@
   </url>
   
   <url>
+    <loc>/categories/aws/</loc>
+    <lastmod>2017-10-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/categories/</loc>
+    <lastmod>2017-10-04T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

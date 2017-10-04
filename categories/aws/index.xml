@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Aws on Salekin Mushfik</title>
+    <link>/categories/aws/</link>
+    <description>Recent content in Aws on Salekin Mushfik</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 04 Oct 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/aws/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Decision diagram for AWS storage and database</title>
+      <link>/blog/2017/10/04/decision-diagram-for-aws-storage-and-database/</link>
+      <pubDate>Wed, 04 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2017/10/04/decision-diagram-for-aws-storage-and-database/</guid>
+      <description>As part of getting certified in AWS solution architect - associate, I built a simple logical diagram to help deciding between various storage and database options available in AWS cloud platform. It is current as of September 2017 and correct to the best of my understanding.</description>
+    </item>
+    
+  </channel>
+</rss>

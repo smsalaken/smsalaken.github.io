@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Decision diagram for AWS storage and database</title>
+      <link>/blog/2017/10/04/decision-diagram-for-aws-storage-and-database/</link>
+      <pubDate>Wed, 04 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2017/10/04/decision-diagram-for-aws-storage-and-database/</guid>
+      <description>As part of getting certified in AWS solution architect - associate, I built a simple logical diagram to help deciding between various storage and database options available in AWS cloud platform. It is current as of September 2017 and correct to the best of my understanding.</description>
+    </item>
+    
+    <item>
       <title>Setting up a cron job in Google App Engine to periodically load data into BigQuery</title>
       <link>/blog/2017/10/04/setting-up-a-cron-job-in-google-app-engine-to-periodically-load-data-into-bigquery/</link>
       <pubDate>Wed, 04 Oct 2017 00:00:00 +0000</pubDate>
