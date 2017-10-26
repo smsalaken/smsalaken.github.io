@@ -78,6 +78,8 @@
     <a class="label" href="/categories/visualization">visualization</a>
     </span>
     <p>If you ever need to provide a select input in shiny that must be controlled by a previous and a forward button, you may consider using the following piece of code. A possible use case is to allow user to browse through different product with having to click on the dropdown menu and select the desired item. For a long list, this manual process can be tedious and a previous/forward button pair would make more sense.</p>
+<div id="ui.r" class="section level3">
+<h3>ui.R</h3>
 <pre class="r"><code># inspired by: https://gist.github.com/haozhu233/9dd15e7ba973de82f124
 library(shiny)
 library(shinyjs)
@@ -104,7 +106,9 @@ shinyUI(
                       )
              )
   )</code></pre>
-<p>server.R</p>
+</div>
+<div id="server.r" class="section level3">
+<h3>server.R</h3>
 <pre class="r"><code>library(shiny)
 library(shinyjs)
 
@@ -181,6 +185,7 @@ shinyServer(function(input, output, session) {
   
   output$dates.input &lt;- renderPrint({input$skus})
 })</code></pre>
+</div>
 
   </div>
   <div id="disqus_thread"></div>
