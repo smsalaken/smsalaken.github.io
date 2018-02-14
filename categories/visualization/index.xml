@@ -6,10 +6,19 @@
     <description>Recent content in Visualization on Salekin Mushfik</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Oct 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 14 Feb 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/visualization/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Realtime Sentiment Analysis using Apache Ni-Fi, R and Shiny web app</title>
+      <link>/blog/2018/02/14/realtime-sentiment-analysis-using-apache-ni-fi-r-and-shiny-web-app/</link>
+      <pubDate>Wed, 14 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2018/02/14/realtime-sentiment-analysis-using-apache-ni-fi-r-and-shiny-web-app/</guid>
+      <description>Imagine doing a sentiment analysis on an ongoing event based on realtime Twitter feed. Twitter will give you a lot of tweets, and you can use R, Python or any other language to collect them. But what happens if you want to do that for a really long time with running a R/Python function in the background i.e. how do you handle streaming? The open source world has provided us with a couple of alternatives which can handle terabytes of streaming data.</description>
+    </item>
     
     <item>
       <title>Shiny:: select input controlled by previous and next button</title>
