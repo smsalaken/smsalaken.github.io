@@ -6,10 +6,19 @@
     <description>Recent content on Salekin Mushfik</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 14 Feb 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 04 Nov 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hosting your own password protected Jupyter Notebook server on AWS</title>
+      <link>/blog/2018/11/04/hosting-your-own-password-protected-jupyter-notebook-server-on-aws/</link>
+      <pubDate>Sun, 04 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2018/11/04/hosting-your-own-password-protected-jupyter-notebook-server-on-aws/</guid>
+      <description>It’s very common to have a need to share your interactive Jupyter notebook with your colleagues. Maybe you are working on a project where you depend on interactivity to easily present information, or maybe your spooky stakeholders want to see ‘something’ on hover in your carefully crafted plots!, forcing you to avoid a github or nbviewer solution. You have an option for Google Colab notebooks, but for some reason you don’t want to use that either.</description>
+    </item>
     
     <item>
       <title>Realtime Sentiment Analysis using Apache Ni-Fi, R and Shiny web app</title>
