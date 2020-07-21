@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>Setting up a cron job in Google App Engine to periodically load data into BigQuery &middot; Salekin Mushfik</title>
+  
+
+  
+  <link rel="stylesheet" href="/css/print.css" media="print">
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Salekin Mushfik" />
+</head>
+
+<body class=" ">
+  <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="/"><h1>Salekin Mushfik</h1></a>
+      <p class="lead">
+       Apparently random analysis and code snippets. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</div>
+
+
+  <div class="content container">
+    <div class="post">
+      <h1>Setting up a cron job in Google App Engine to periodically load data into BigQuery</h1>
+      <span class="post-date">Wed, Oct 4, 2017</span>
+      
+
+
+<p>It is often important to accept incoming data at regular interval and then update the data warehouse with these new data. A cron job is perfect for this kind of task. I have recently worked to achieve such a task using Google cloud platform and did not want to spin up a single compute engine instance just for this purpose. That would be a complete waste of resource. The other viable alternative is to use a Google App Engine instance and configure a cron job. That way I am not consuming a lot of resource and is paying for only what I use.</p>
+<p>This particular task assumed that incremental loading data will be made avaialble in a cloud storage bucket as a csv file and the data will be inserted into the data warehousing platform at a fixed interval. This post describes the step-by-step process for achieving this and is easy to follow even if you are just a beginner on cloud platform in general.</p>
+<p>Before you begin, create a new project tin google cloud console, a google cloud storage bucket and a bigquery table with required schema according to your dataset. You may also need to install Google Cloud SDK and configure it. The following instructions are tested on a Mac Sierra notebook.</p>
+<p>To create a cron job on Google App Engine instance, follow these steps:</p>
+<ol style="list-style-type: decimal">
+<li><p>Create a new directory by running <code>mkdir ~/Desktop/newCronJob</code></p></li>
+<li><p>Move into this directory by typing <code>cd ~/Desktop/newCronJob</code></p></li>
+<li><p>Create a new virtual environment by running <code>virtualenv gcp-cron</code></p></li>
+<li><p>Activate this environemnt by running <code>source gcp-cron/bin/activate</code></p></li>
+<li><p>Create a new directory to install required library for upload to app engine. This is a required step since google does not provide google-cloud library in runtime and we need to ‘vendor’ it during the run time, just like any other pure-python third party library. Let’s call this directory <code>lib</code></p></li>
+<li><p>Create a new <code>requirements.txt</code> file. Put <code>google-cloud==0.19</code> in the file. We specifically need this version since the new version did not work with <code>from google.cloud import bigquery</code> which is required to upload data from cloud storage to bigquery table. At this point, you may also need to set-up the environment by running <code>gcloud init</code>. See <a href="https://cloud.google.com/ml-engine/docs/quickstarts/command-line" class="uri">https://cloud.google.com/ml-engine/docs/quickstarts/command-line</a> for help.</p></li>
+<li><p>Install the requirements by running <code>pip install -r requirements.txt -t lib</code>. This <code>lib</code> will be uploaded to GAE and sourced into python path in runtime to provide the cloud library.</p></li>
+<li><p>For local testing, we also need these libraries to be available in virtual environment. Install them by running <code>pip install -r requirements.txt</code> without specifying the target location. (I am little confused here, is there any better way to include these libraries in dev_appserver? I did not succeed by simply appending the path to <code>lib</code>, but then I did not try too hard).</p></li>
+<li><p>Create <code>app.yaml</code> and put the following in the file:</p></li>
+</ol>
+<pre class="bash"><code>runtime: python27
+api_version: 1
+threadsafe: false
+
+handlers:
+- url: /.*
+  script: main.app</code></pre>
+<ol start="10" style="list-style-type: decimal">
+<li>Create a <code>cron.yaml</code> and put the following:</li>
+</ol>
+<pre class="bash"><code>cron:
+- description: cron to BQ
+  url: /cronjobs
+  schedule: every 15 minutes from 10:20 to 11:20</code></pre>
+<ol start="11" style="list-style-type: decimal">
+<li>Create <code>appengine_config.py</code> and put the following in it:</li>
+</ol>
+<pre class="bash"><code># appengine_config.py, import the libraries included in ‘lib’ #directory
+from google.appengine.ext import vendor
+
+# Add any libraries install in the &quot;lib&quot; folder.
+vendor.add(&#39;lib&#39;)
+
+import os, sys
+
+# This allows to avoid error on local machine #https://stackoverflow.com/questions/41783864/importerror-no-module-name#d-ctypes-google-app-engine-with-bokeh-plot
+
+on_appengine = os.environ.get(&#39;SERVER_SOFTWARE&#39;,&#39;&#39;).startswith(&#39;Development&#39;)
+if on_appengine and os.name == &#39;nt&#39;:
+    sys.platform = &quot;Not Windows&quot;</code></pre>
+<ol start="12" style="list-style-type: decimal">
+<li>Finally, create a <code>main.py</code> and put the following:</li>
+</ol>
+<pre class="bash"><code>import webapp2
+import google
+import os.path
+import sys
+
+# this is only for debug, just to see if we can properly import the google.cloud libraries, Remove once # done.
+here = os.path.dirname(os.path.abspath(__file__))
+here = os.path.relpath(google.__file__, here)
+flag = 0
+
+try:
+    # if the google/ directory is in the directory /path/to/directory/
+    #path_to_look_for_module = sys.path[0]+&#39;/lib&#39;
+
+    #if not path_to_look_for_module in sys.path:
+    #    sys.path.append(path_to_look_for_module)
+
+    from os.path import dirname, realpath, sep, pardir
+    import sys
+    #sys.path.insert(0,dirname(__file__) + sep + &quot;lib&quot;)
+    sys.path.append(os.path.join(os.path.dirname(__file__), &quot;lib&quot;))
+
+    here = here + &#39;sys.path appended with &#39; + os.path.join(os.path.dirname(__file__), &quot;lib&quot;)
+
+    from google.cloud import bigquery
+    flag = 1
+
+    here = here + &#39; ...cloud import was successful&#39;
+except:
+    if flag == 0:
+        here = here + &#39; IMPORT NOT SUCCESSFUL&#39;
+    pass
+
+
+
+
+#####################################################
+### the main class to handle ‘catch all’ requests ###
+#####################################################
+
+class MainPage(webapp2.RequestHandler):
+    def get(self):
+        self.response.headers[&#39;Content-Type&#39;] = &#39;text/plain&#39;
+
+       # these are debugging statements, 
+       # outputs of these can be seen by going to app url
+       # remove the print statements once debugging is complete
+
+        self.response.write(&#39;Hello, World!&#39;+ here + &#39;\n&#39;)
+        self.response.write(google.__path__)
+        self.response.write(&#39;\n&#39; + &#39;flag:&#39;+ str(flag))
+        self.response.write(&#39;\n&#39;)
+        self.response.write(dirname(__file__) + sep + &quot;lib&quot;)
+
+##############################################################
+# cron handler class, it should return a code between 200-299
+# if successful. Otherwise, cron would treat that as fail. This 
+# is why we need webapp2.RequestHandler to be included
+##############################################################
+
+class UploadBQ(webapp2.RequestHandler): # webapp2… important
+
+    def get(self): # putting get with self is important. 
+                   # Cron jobs are essentially equivalent to  hitting an URL 
+        from  google.cloud import bigquery
+        import uuid
+        dataset_name = &#39;cloudStorage&#39;                         # change this to your need
+        table_name = &#39;test&#39;                                   # change this to your need
+        source = &#39;gs://gcp-test-bucket1/data.csv&#39;             # change this to your need
+        bigquery_client = bigquery.Client()
+        dataset = bigquery_client.dataset(dataset_name)
+        table = dataset.table(table_name)
+        job_name = str(uuid.uuid4())
+
+        job = bigquery_client.load_table_from_storage(job_name, table, source)
+
+        job.begin()         # start the upload
+
+        # in version 0.19, which is required for successful import of google-cloud,
+        # job.result() method is not defined. Do it manually instead.
+        # job.result(timeout = 120)  # Wait for job to complete - doesn’t work on 0.19 google-cloud
+        
+  
+  import time
+        retry_count = 120    # if your job needs more time, increase this
+        while retry_count &gt; 0 and job.state != &#39;DONE&#39;:
+            retry_count -= 1
+            time.sleep(10)
+            job.reload()  # API call
+
+#################################
+# invoke the app and define urls
+#################################
+
+app = webapp2.WSGIApplication([
+    (&#39;/&#39;, MainPage),             # for everything except cron, use this class
+    (&#39;/cronjobs&#39;, UploadBQ)      # cron jobs, which hits ‘/cronjobs’ url, must use this class
+], debug=True)</code></pre>
+<ol start="13" style="list-style-type: decimal">
+<li><p>Afterwards, run <code>dev_appserver.py app.yaml</code> to test your application locally. Go to <a href="http://localhost:8080" class="uri">http://localhost:8080</a> for the front-end and <a href="http://localhost:8000" class="uri">http://localhost:8000</a> for admin interface. Once your local version is working perfectly, we can deploy the app.</p></li>
+<li><p>Deploy both the app and cron job configuration by running <code>gcloud app deploy app.yaml cron.yaml</code> and follow the terminal prompts.</p></li>
+</ol>
+<p>Once deployed, go to you app engine dashboard on Google cloud console and visit the task queue page. From here, you should be able to see the task you just set up in the cron tab. If you want to test your cronjob, just click on <code>Run now</code> button for the configured task. You are also able to go through the log for your cron task. Remember to increase timeout paramter if your task is running out of time.</p>
+
+    </div>
+
+			
+		</div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>r on Salekin</title>
+    <link>/tags/r/</link>
+    <description>Recent content in r on Salekin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 14 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Realtime Sentiment Analysis using Apache Ni-Fi, R and Shiny web app</title>
+      <link>/post/realtime-sentiment-analysis-using-apache-ni-fi-r-and-shiny-web-app/</link>
+      <pubDate>Wed, 14 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/realtime-sentiment-analysis-using-apache-ni-fi-r-and-shiny-web-app/</guid>
+      <description>Imagine doing a sentiment analysis on an ongoing event based on realtime Twitter feed. Twitter will give you a lot of tweets, and you can use R, Python or any other language to collect them. But what happens if you want to do that for a really long time with running a R/Python function in the background i.e. how do you handle streaming? The open source world has provided us with a couple of alternatives which can handle terabytes of streaming data.</description>
+    </item>
+    
+    <item>
+      <title>Printing pyramid with R</title>
+      <link>/post/printing-pyramid-with-r/</link>
+      <pubDate>Wed, 02 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/printing-pyramid-with-r/</guid>
+      <description>I recently attended an interview where one of the programming questions asked to solve a very basic programming problem. The target of questions like these is not to see if you can write the most efficient code, but to see how you approach the problem. This particular question asked to print a pyramid of stars for a given depth.
+Below is a code to achieve this output in r. This is not the most efficient code, but it shows a simple method.</description>
+    </item>
+    
+    <item>
+      <title>Gantt chart using Gvis</title>
+      <link>/post/gantt-chart-using-gvis/</link>
+      <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/gantt-chart-using-gvis/</guid>
+      <description>Gantt chart can be very useful to visualize the occurance of certain events on a timeline. If you need create one programmetically, you can use gvis package which utilizes plotting library from Google.
+# get the data df &amp;lt;- data_get() # make sure you get the data here # convert time to decimal hours, remove if not required df$start.ct &amp;lt;- as.POSIXct(paste(df$`Date Time`, df$start, sep = &amp;quot; &amp;quot;)) df$end.ct &amp;lt;- as.</description>
+    </item>
+    
+  </channel>
+</rss>

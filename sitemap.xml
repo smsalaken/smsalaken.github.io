@@ -1,87 +1,135 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/blog/2018/11/04/hosting-your-own-password-protected-jupyter-notebook-server-on-aws/</loc>
-    <lastmod>2018-11-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/2018/02/14/realtime-sentiment-analysis-using-apache-ni-fi-r-and-shiny-web-app/</loc>
-    <lastmod>2018-02-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/2017/10/26/shiny-select-input-controlled-by-previous-and-next-button/</loc>
-    <lastmod>2017-10-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/2017/10/04/decision-diagram-for-aws-storage-and-database/</loc>
-    <lastmod>2017-10-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/2017/10/04/setting-up-a-cron-job-in-google-app-engine-to-periodically-load-data-into-bigquery/</loc>
-    <lastmod>2017-10-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/2017/08/02/printing-pyramid-with-r/</loc>
-    <lastmod>2017-08-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/2017/07/27/dual-y-axis-in-ggplot/</loc>
-    <lastmod>2017-07-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/blog/2017/07/27/gantt-chart-using-gvis/</loc>
-    <lastmod>2017-07-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/categories/aws/</loc>
-    <lastmod>2018-11-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2020-07-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2018-11-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2020-07-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/gae/</loc>
-    <lastmod>2017-10-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/interview/</loc>
-    <lastmod>2017-08-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>/categories/data-ingestion/</loc>
+    <lastmod>2020-07-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2018-11-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2020-07-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/python/</loc>
+    <lastmod>2020-07-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/</loc>
+    <lastmod>2020-07-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/serverless-data-ingestion-using-aws-fargate/</loc>
+    <lastmod>2020-07-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/solution-architecture/</loc>
+    <lastmod>2020-07-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-07-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/hosting-your-own-password-protected-jupyter-notebook-server-on-aws/</loc>
     <lastmod>2018-11-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/r/</loc>
+    <lastmod>2018-02-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/realtime-sentiment-analysis-using-apache-ni-fi-r-and-shiny-web-app/</loc>
+    <lastmod>2018-02-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/sentiment-analysis/</loc>
+    <lastmod>2018-02-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/shiny/</loc>
+    <lastmod>2018-02-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/visualization/</loc>
     <lastmod>2018-02-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/post/shiny-select-input-controlled-by-previous-and-next-button/</loc>
+    <lastmod>2017-10-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/cronjobs/</loc>
+    <lastmod>2017-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/decision-diagram-for-aws-storage-and-database/</loc>
+    <lastmod>2017-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/gae/</loc>
+    <lastmod>2017-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/setting-up-a-cron-job-in-google-app-engine-to-periodically-load-data-into-bigquery/</loc>
+    <lastmod>2017-10-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/interview/</loc>
+    <lastmod>2017-08-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/printing-pyramid-with-r/</loc>
+    <lastmod>2017-08-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/dual-y-axis-in-ggplot/</loc>
+    <lastmod>2017-07-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/gantt-chart-using-gvis/</loc>
+    <lastmod>2017-07-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/ggplot2/</loc>
+    <lastmod>2017-07-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/gvis/</loc>
+    <lastmod>2017-07-27T00:00:00+00:00</lastmod>
   </url>
   
 </urlset>

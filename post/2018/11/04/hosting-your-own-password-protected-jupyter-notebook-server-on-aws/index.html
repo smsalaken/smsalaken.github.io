@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>Hosting your own password protected Jupyter Notebook server on AWS &middot; Salekin Mushfik</title>
+  
+
+  
+  <link rel="stylesheet" href="/css/print.css" media="print">
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Salekin Mushfik" />
+</head>
+
+<body class=" ">
+  <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="/"><h1>Salekin Mushfik</h1></a>
+      <p class="lead">
+       Apparently random analysis and code snippets. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</div>
+
+
+  <div class="content container">
+    <div class="post">
+      <h1>Hosting your own password protected Jupyter Notebook server on AWS</h1>
+      <span class="post-date">Sun, Nov 4, 2018</span>
+      
+
+
+<p>It’s very common to have a need to share your interactive Jupyter notebook with your colleagues. Maybe you are working on a project where you depend on interactivity to easily present information, or maybe your spooky stakeholders want to see ‘something’ on hover in your carefully crafted plots!, forcing you to avoid a github or nbviewer solution. You have an option for Google Colab notebooks, but for some reason you don’t want to use that either.</p>
+<p>So, what to do in that case other than spinning up your own server on the cloud and open that up for your stakeholders behind a password protected firewall?</p>
+<p>Let’s do just that. Here’s what you need to do:</p>
+<ol style="list-style-type: decimal">
+<li><p>Spin up an AWS EC2 instance:</p>
+<p>I am not going to teach you how because there are so many of those just a google search away. Just go to your AWS console, create a new EC2 instance, create or edit a new security group where all incoming TCP connections are allowed to port 8888 and 443. Also make sure your outgoing connections are not interrupted.</p></li>
+<li><p>Install Anaconda.</p>
+<p>I had Ubuntu 18.04 with Anaconda 5.3. Go to Anaconda website, get the latest Anaconda release and execute the following code (replace with your link for latest anaonda relase .sh file).</p>
+<pre class="bash"><code>wget https://repo.anaconda.com/archive/Anaconda3-5.3.0-Linux-x86_64.sh
+bash Anaconda3-5.3.0-Linux-x86_64.sh</code></pre>
+<p>Accepts the license agreement (don’t hurry with your ENTER button here please ;) and keep accepting the default choice until the whole installation prcess completes.</p></li>
+<li><p>Install Plotly</p>
+<p>Because that’s the whole point for my scenario right?
+<code>bash  conda install plotly</code></p></li>
+<li><p>Create a directory for storing notebooks</p>
+<pre class="bash"><code>mkdir Notebooks</code></pre></li>
+<li><p>Create a password for your Jupyter notebook login</p>
+<pre class="python"><code>ipython
+from IPython.lib import passwd
+passwd()
+Enter password: [Create password and press enter] 
+Verify password: [Press enter]
+&#39;sha1:98ff0e580111:12798c72623a6eecd54b51c0069u0dASDAU0f0acdsdcascd&#39;
+exit</code></pre>
+<p>Copy your sha1 code and paste somewhere safe for a moment.</p></li>
+<li><p>Create a Jupyter config file.</p>
+<pre class="bash"><code>jupyter notebook --generate-config</code></pre></li>
+<li><p>Open that config file.</p>
+<pre class="bash"><code>nano ~/.jupyter/jupyter_notebook_config.py</code></pre></li>
+<li><p>Insert the following at the top of the file to customize your Jupyter server. Remember to replace my SHA1 hash with the one you just created.</p>
+<pre class="python"><code>
+c = get_config()
+
+# kernel config
+c.IPKernelApp.pylab = ‘inline’ # for inline plotting in notebook
+
+# notebook config
+# I am not using HTTPS as it was giving me permission denied error (Err no 13)
+# on Ubuntu 18.04 and Anaconda 5.3 on an AWS EC2 instance
+
+c.NotebookApp.ip = ‘0.0.0.0’ # any IP
+c.NotebookApp.open_browser = False # to prevent opening browser window automatically when jupyter starts
+c.NotebookApp.password = u’sha1:YOUR_PASSWORH_HASH’
+c.NotebookApp.port = 8888
+c.NotebookApp.allow_origin = ‘*’ # allow all sources to connect</code></pre>
+<p>Save and exit by pressing <code>ctrl+x</code> and <code>Y</code> and <code>Enter</code></p></li>
+<li><p>Copy your notebook file on the Notebook folder you created earlier. I just pushed to github from my local machine and cloned into AWS machine.</p></li>
+<li><p>Now you’re ready to connect to your server using you password. Just start the Jupyter server.</p>
+<pre class="bash"><code>screen
+jupyter notebook</code></pre>
+<p>I prefer to use a screen so that I can do other things on the same computer while Jupyter server session is running on my screen. If you want to get out of the screen, just do <code>ctrl+a</code> and then <code>d</code>. If you want to go back to the screen, use <code>screen -ls</code> and <code>screen -r</code> with the screen you want to connect to.</p></li>
+<li><p>Connect to your Jupyter notebook on AWS EC2 by copying your public IP from AWS EC2 console and adding post 8888 at the end.</p>
+<p>For example, if your IP is <code>54.12.12.12</code> then go to <code>54.12.12.12:8888</code>. You will get a Jupyter screen asking for password. Provide the password that you used to create that SHA1 hash. And viola, you’re in. You can share that URL and password with your colleagues now.</p>
+<p>Remember to shutdown your EC2 when you no longer need it, and yes, I tested this on a free tier eligible machine.</p></li>
+</ol>
+
+    </div>
+
+			
+		</div>
+
+</body>
+</html>

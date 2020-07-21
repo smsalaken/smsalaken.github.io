@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.74.2" />
+
+    
+    
+    
+
+<title>Realtime Sentiment Analysis using Apache Ni-Fi, R and Shiny web app • Salekin</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Realtime Sentiment Analysis using Apache Ni-Fi, R and Shiny web app"/>
+<meta name="twitter:description" content="Imagine doing a sentiment analysis on an ongoing event based on realtime Twitter feed. Twitter will give you a lot of tweets, and you can use R, Python or any other language to collect them. But what happens if you want to do that for a really long time with running a R/Python function in the background i.e. how do you handle streaming? The open source world has provided us with a couple of alternatives which can handle terabytes of streaming data."/>
+
+<meta property="og:title" content="Realtime Sentiment Analysis using Apache Ni-Fi, R and Shiny web app" />
+<meta property="og:description" content="Imagine doing a sentiment analysis on an ongoing event based on realtime Twitter feed. Twitter will give you a lot of tweets, and you can use R, Python or any other language to collect them. But what happens if you want to do that for a really long time with running a R/Python function in the background i.e. how do you handle streaming? The open source world has provided us with a couple of alternatives which can handle terabytes of streaming data." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/realtime-sentiment-analysis-using-apache-ni-fi-r-and-shiny-web-app/" />
+<meta property="article:published_time" content="2018-02-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-02-14T00:00:00+00:00" /><meta property="og:site_name" content="Salekin Syed" />
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/sunburst.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="/">Salekin</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="/img/sal2.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         My notes on data science, engineering and visualization 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Salekin</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	
+	
+	<a href="https://github.com/smsalaken" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/salaken" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="https://stackoverflow.com/users/7860688" rel="me"><i class="fab fa-stack-overflow fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://orcid.org/0000-0001-8632-2665" rel="me"><i class="fab fa-orcid fa-lg" aria-hidden="true"></i></a>
+	
+	
+	<a href="mailto:s[dot]m[dot]salaken[at]gmail[dot]com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2018 - 2020 smsalaken
+  
+    <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
+  
+</div>
+
+
+<div class="builtwith">
+Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.com/htr3n/hyde-hyde">hyde-hyde</a>.
+</div>
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Realtime Sentiment Analysis using Apache Ni-Fi, R and Shiny web app</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Feb 14, 2018
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/visualization">VISUALIZATION</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/shiny">shiny</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/r">r</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/sentiment-analysis">sentiment analysis</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 2 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    
+
+
+<p>Imagine doing a sentiment analysis on an ongoing event based on realtime Twitter feed. Twitter will give you a lot of tweets, and you can use R, Python or any other language to collect them. But what happens if you want to do that for a really long time with running a R/Python function in the background i.e. how do you handle streaming? The open source world has provided us with a couple of alternatives which can handle terabytes of streaming data. Apache Ni-Fi is one of them.</p>
+<p>This is my first take at using Ni-Fi to run some sentiment analysis on realtime twitter feed. The workflow is amazingly simple. Set up a dataflow using Ni-Fi, collect the tweets in a json file within a directory, run R to perform a simple sentiment analysis and then create a shiny (R) dashboard to show the sentiment.</p>
+<p>I started with the aim to do the anlysis on a particular Twitter profile, Donald Trump being the profile of my attention. I rightly assumed (which was later proved by sentiment analysis, of course) he will be posting a lot of hateful and negative sentiment, but I lost my intereset on his tweets very quickly. I guess negative emotions (or his perspective on things) are not too attractive for me. However, in the course, I figured out a way to retrieve full tweets from a particular person from a lot of retweets.</p>
+<p>Next I focused on two different topics, sports and politics, and wanted to see how people express their emotions on these subjects. I filtered tweets for these two topics using seperate Ni-Fi dataflow and keep the process running while I started my shiny dashboard. You can see a screenshot of the dashboard below.</p>
+<p><img src="/post/2018-02-14-realtime-sentiment-analysis-using-apache-ni-fi-r-and-shiny-web-app_files/shiny_dash_sent_nifi.png" style="width:100.0%" /></p>
+<div id="sentiment-on-politics" class="section level2">
+<h2>Sentiment on Politics:</h2>
+<p><img src="/post/2018-02-14-realtime-sentiment-analysis-using-apache-ni-fi-r-and-shiny-web-app_files/politics_sentiment.gif" style="width:100.0%" /></p>
+</div>
+<div id="sentiment-on-sports" class="section level2">
+<h2>Sentiment on Sports:</h2>
+<p>Notice the balls on negatove sentiments are spreading less!!
+<img src="/post/2018-02-14-realtime-sentiment-analysis-using-apache-ni-fi-r-and-shiny-web-app_files/sport_sentiment.gif" style="width:100.0%" /></p>
+</div>
+<div id="ni-fi-dataflow-graph" class="section level2">
+<h2>Ni-Fi dataflow graph:</h2>
+<p>The dataflow can be set-up as shown below:
+<img src="/post/2018-02-14-realtime-sentiment-analysis-using-apache-ni-fi-r-and-shiny-web-app_files/nifi_flow_sent.png" style="width:100.0%" /></p>
+</div>
+<div id="source-code" class="section level2">
+<h2>Source code:</h2>
+<p>If you want to play with the data or code, go to this github repo: <a href="https://github.com/smsalaken/sentiment_analysis_NiFi_R" class="uri">https://github.com/smsalaken/sentiment_analysis_NiFi_R</a></p>
+<p>Ni-Fi flow to find tweets from a particular profile can be found in <code>'Ni-Fi templates/twitter_people_onPeople.xml'</code></p>
+</div>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/post/shiny-select-input-controlled-by-previous-and-next-button/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Shiny:: select input controlled by previous and next button</span>
+    </a>
+    
+    
+    <a href="/post/hosting-your-own-password-protected-jupyter-notebook-server-on-aws/" class="navigation-next">
+      <span class="navigation-tittle">Hosting your own password protected Jupyter Notebook server on AWS</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+
+    (function () {
+    if (location.hostname === "localhost" ||
+      location.hostname === "127.0.0.1" ||
+      location.hostname === "") {
+      return;
+    }
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    var disqus_shortname = 'smsalaken';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || 
+      document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+<noscript>
+  Please enable JavaScript to view the
+  <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by
+  <span class="logo-disqus">Disqus</span>
+</a>
+
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+    
+
+
+
+    </body>
+</html>

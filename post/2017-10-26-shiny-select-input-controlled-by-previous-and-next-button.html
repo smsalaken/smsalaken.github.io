@@ -1,0 +1,111 @@
+
+
+<p>If you ever need to provide a select input in shiny that must be controlled by a previous and a forward button, you may consider using the following piece of code. A possible use case is to allow user to browse through different product with having to click on the dropdown menu and select the desired item. For a long list, this manual process can be tedious and a previous/forward button pair would make more sense.</p>
+<div id="ui.r" class="section level3">
+<h3>ui.R</h3>
+<pre class="r"><code># inspired by: https://gist.github.com/haozhu233/9dd15e7ba973de82f124
+library(shiny)
+library(shinyjs)
+shinyUI(
+  navbarPage(&quot;Demo&quot;, 
+             position = &quot;static-top&quot;,
+             fluid = F,
+             
+             tabPanel(&quot;Demo&quot;,class=&quot;active&quot;,
+                      sidebarLayout(
+                        
+                        sidebarPanel(
+                          shinyjs::useShinyjs(),
+                          
+                          uiOutput(&quot;choose.date&quot;),
+                                     tags$div(class=&quot;row&quot;,
+                                              tags$div(class=&quot;col-xs-6 text-center&quot;, uiOutput(&quot;prev_button.btn&quot;)),
+                                              tags$div(class=&quot;col-xs-6 text-center&quot;, uiOutput(&quot;next_button.btn&quot;)))
+                        ),
+                        mainPanel = (
+                          textOutput(&quot;dates.input&quot;)
+                        )
+                        )
+                      )
+             )
+  )</code></pre>
+</div>
+<div id="server.r" class="section level3">
+<h3>server.R</h3>
+<pre class="r"><code>library(shiny)
+library(shinyjs)
+
+# inspired by: https://gist.github.com/haozhu233/9dd15e7ba973de82f124
+
+shinyServer(function(input, output, session) {
+  session$onSessionEnded(function() {
+    stopApp()
+  })
+  
+  choiceList &lt;- c(&quot;Item 1&quot;, &quot;Item 2&quot;, &quot;Item 3&quot;)
+  
+  
+  # ------- Select Input + previous/next week buttons---------------
+  output$choose.date &lt;- renderUI({
+    selectInput(&quot;skus&quot;,
+                &quot;Select SKU&quot;,
+                choices = choiceList)
+  }) 
+  
+  output$prev_button.btn &lt;- renderUI({
+    actionButton(&quot;prev_button&quot;, 
+                 label = HTML(&quot;&lt;span class=&#39;small&#39;&gt;&lt;i class=&#39;glyphicon glyphicon-arrow-left&#39;&gt;&lt;/i&gt; Back&lt;/span&gt;&quot;))
+  })
+  output$next_button.btn &lt;- renderUI({
+    actionButton(&quot;next_button&quot;, 
+                 label = HTML(&quot;&lt;span class=&#39;small&#39;&gt;Next &lt;i class=&#39;glyphicon glyphicon-arrow-right&#39;&gt;&lt;/i&gt;&lt;/span&gt;&quot;))
+  })
+  
+
+  observeEvent(input$prev_button, {
+    if(input$skus == choiceList[1]){
+      shinyjs::disable(&quot;prev_button&quot;)
+      shinyjs::enable(&quot;next_button&quot;)
+      updateSelectInput(session, &quot;skus&quot;,
+                        label = &quot;Select SKU&quot;,
+                        choices = choiceList,
+                        selected = choiceList[1])
+    } else{
+      shinyjs::enable(&quot;prev_button&quot;)
+      shinyjs::enable(&quot;next_button&quot;)
+      updateSelectInput(session, &quot;skus&quot;,
+                        label = &quot;Select SKU&quot;,
+                        choices = choiceList,
+                        selected = choiceList[match(input$skus, choiceList)-1])
+    } 
+    
+    
+    
+    
+    })
+  
+  observeEvent(input$next_button, {
+    
+    if(input$skus == choiceList[length(choiceList)]){
+      shinyjs::disable(&quot;next_button&quot;)
+      shinyjs::enable(&quot;prev_button&quot;)
+      updateSelectInput(session, &quot;skus&quot;,
+                        label = &quot;Select SKU&quot;,
+                        choices = choiceList,
+                        selected = choiceList[length(choiceList)])
+    } else{
+      shinyjs::enable(&quot;next_button&quot;)
+      shinyjs::enable(&quot;prev_button&quot;)
+      updateSelectInput(session, &quot;skus&quot;,
+                        label = &quot;Select SKU&quot;,
+                        choices = choiceList,
+                        selected = choiceList[match(input$skus, choiceList)+1])
+    } 
+    
+    
+    
+    })
+  
+  output$dates.input &lt;- renderPrint({input$skus})
+})</code></pre>
+</div>

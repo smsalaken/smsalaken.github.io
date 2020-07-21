@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.74.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  
+  <title>Realtime Sentiment Analysis using Apache Ni-Fi, R and Shiny web app &middot; Salekin Mushfik</title>
+  
+
+  
+  <link rel="stylesheet" href="/css/print.css" media="print">
+  <link rel="stylesheet" href="/css/poole.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Salekin Mushfik" />
+</head>
+
+<body class=" ">
+  <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="/"><h1>Salekin Mushfik</h1></a>
+      <p class="lead">
+       Apparently random analysis and code snippets. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+    </ul>
+
+    <p>&copy; 2020. All rights reserved. </p>
+  </div>
+</div>
+
+
+  <div class="content container">
+    <div class="post">
+      <h1>Realtime Sentiment Analysis using Apache Ni-Fi, R and Shiny web app</h1>
+      <span class="post-date">Wed, Feb 14, 2018</span>
+      
+
+
+<p>Imagine doing a sentiment analysis on an ongoing event based on realtime Twitter feed. Twitter will give you a lot of tweets, and you can use R, Python or any other language to collect them. But what happens if you want to do that for a really long time with running a R/Python function in the background i.e. how do you handle streaming? The open source world has provided us with a couple of alternatives which can handle terabytes of streaming data. Apache Ni-Fi is one of them.</p>
+<p>This is my first take at using Ni-Fi to run some sentiment analysis on realtime twitter feed. The workflow is amazingly simple. Set up a dataflow using Ni-Fi, collect the tweets in a json file within a directory, run R to perform a simple sentiment analysis and then create a shiny (R) dashboard to show the sentiment.</p>
+<p>I started with the aim to do the anlysis on a particular Twitter profile, Donald Trump being the profile of my attention. I rightly assumed (which was later proved by sentiment analysis, of course) he will be posting a lot of hateful and negative sentiment, but I lost my intereset on his tweets very quickly. I guess negative emotions (or his perspective on things) are not too attractive for me. However, in the course, I figured out a way to retrieve full tweets from a particular person from a lot of retweets.</p>
+<p>Next I focused on two different topics, sports and politics, and wanted to see how people express their emotions on these subjects. I filtered tweets for these two topics using seperate Ni-Fi dataflow and keep the process running while I started my shiny dashboard. You can see a screenshot of the dashboard below.</p>
+<p><img src="shiny_dash_sent_nifi.png" width="100%" /></p>
+<div id="sentiment-on-politics" class="section level2">
+<h2>Sentiment on Politics:</h2>
+<p><img src="politics_sentiment.gif" /></p>
+</div>
+<div id="sentiment-on-sports" class="section level2">
+<h2>Sentiment on Sports:</h2>
+<p>Notice the balls on negatove sentiments are spreading less!!
+<img src="sport_sentiment.gif" /></p>
+</div>
+<div id="ni-fi-dataflow-graph" class="section level2">
+<h2>Ni-Fi dataflow graph:</h2>
+<p>The dataflow can be set-up as shown below:
+<img src="nifi_flow_sent.png" width="100%" /></p>
+</div>
+<div id="source-code" class="section level2">
+<h2>Source code:</h2>
+<p>If you want to play with the data or code, go to this github repo: <a href="https://github.com/smsalaken/sentiment_analysis_NiFi_R" class="uri">https://github.com/smsalaken/sentiment_analysis_NiFi_R</a></p>
+<p>Ni-Fi flow to find tweets from a particular profile can be found in <code>'Ni-Fi templates/twitter_people_onPeople.xml'</code></p>
+</div>
+
+    </div>
+
+			
+		</div>
+
+</body>
+</html>

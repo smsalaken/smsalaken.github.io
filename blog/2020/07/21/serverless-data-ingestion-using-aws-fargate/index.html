@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.74.2" />
+
+    
+    
+    
+
+<title>Serverless data ingestion using AWS Fargate • Salekin Mushfik</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Serverless data ingestion using AWS Fargate"/>
+<meta name="twitter:description" content="This page documents the steps I undertook to automate the daily data ingestion in a database we use on daily basis (Postgres in RDS). It can serve as a template for future application containerization. While this may be trivial for the DevOps team, it is certainly a bit outside of the usual data science skill set. While it is not uncommon for data scientists to run things via docker when they need completely isolated things, the Fargate part is something most data scientist will not touch in the usual workflow."/>
+
+<meta property="og:title" content="Serverless data ingestion using AWS Fargate" />
+<meta property="og:description" content="This page documents the steps I undertook to automate the daily data ingestion in a database we use on daily basis (Postgres in RDS). It can serve as a template for future application containerization. While this may be trivial for the DevOps team, it is certainly a bit outside of the usual data science skill set. While it is not uncommon for data scientists to run things via docker when they need completely isolated things, the Fargate part is something most data scientist will not touch in the usual workflow." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2020/07/21/serverless-data-ingestion-using-aws-fargate/" />
+<meta property="article:published_time" content="2020-07-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-07-21T00:00:00+00:00" />
+
+
+    
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.3081c4981fb69a2783dd36ecfdd0e6ba7a158d4cbfdd290ebce8f78ba0469fc6.css" integrity="sha256-MIHEmB&#43;2mieD3Tbs/dDmunoVjUy/3SkOvOj3i6BGn8Y=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="/">Salekin Mushfik</a>
+      </span>
+      
+      
+      <p class="site__description">
+         Notes on data engineering, science and visualization 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Salekin Mushfik</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</section>
+
+      </div>
+    </div>
+    
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Serverless data ingestion using AWS Fargate</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Jul 21, 2020
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/aws">AWS</a>
+              •
+          
+              <a class="badge badge-category" href="/categories/data-ingestion">DATA INGESTION</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/python">python</a>
+           
+      
+          <a class="badge badge-tag" href="/tags/solution-architecture">solution architecture</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 1 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    
+
+
+<p>This page documents the steps I undertook to automate the daily data ingestion in a database we use on daily basis (Postgres in RDS). It can serve as a template for future application containerization. While this may be trivial for the DevOps team, it is certainly a bit outside of the usual data science skill set. While it is not uncommon for data scientists to run things via docker when they need completely isolated things, the Fargate part is something most data scientist will not touch in the usual workflow. This article is aimed for the data science team who might benefit from the basics. And for this reason, I might explain trivial things that a developer might not find useful.</p>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/blog/2018/11/04/hosting-your-own-password-protected-jupyter-notebook-server-on-aws/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Hosting your own password protected Jupyter Notebook server on AWS</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+
+    (function () {
+    if (location.hostname === "localhost" ||
+      location.hostname === "127.0.0.1" ||
+      location.hostname === "") {
+      return;
+    }
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    var disqus_shortname = 'smsalaken';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || 
+      document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+<noscript>
+  Please enable JavaScript to view the
+  <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by
+  <span class="logo-disqus">Disqus</span>
+</a>
+
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+
+
+    
+
+
+
+    </body>
+</html>

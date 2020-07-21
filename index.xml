@@ -1,88 +1,97 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Salekin Mushfik</title>
+    <title>Salekin</title>
     <link>/</link>
-    <description>Recent content on Salekin Mushfik</description>
+    <description>Recent content on Salekin</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 04 Nov 2018 00:00:00 +0000</lastBuildDate>
+    <language>en</language>
+    <lastBuildDate>Tue, 21 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Serverless data ingestion using AWS Fargate</title>
+      <link>/post/serverless-data-ingestion-using-aws-fargate/</link>
+      <pubDate>Tue, 21 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/serverless-data-ingestion-using-aws-fargate/</guid>
+      <description>This page documents the steps I undertook to automate the daily data ingestion in a database we use on daily basis (Postgres in RDS). It can serve as a template for future application containerization. While this may be trivial for the DevOps team, it is certainly a bit outside of the usual data science skill set. While it is not uncommon for data scientists to run things via docker when they need completely isolated things, the Fargate part is something most data scientist will not touch in the usual workflow.</description>
+    </item>
+    
+    <item>
       <title>Hosting your own password protected Jupyter Notebook server on AWS</title>
-      <link>/blog/2018/11/04/hosting-your-own-password-protected-jupyter-notebook-server-on-aws/</link>
+      <link>/post/hosting-your-own-password-protected-jupyter-notebook-server-on-aws/</link>
       <pubDate>Sun, 04 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2018/11/04/hosting-your-own-password-protected-jupyter-notebook-server-on-aws/</guid>
+      <guid>/post/hosting-your-own-password-protected-jupyter-notebook-server-on-aws/</guid>
       <description>It’s very common to have a need to share your interactive Jupyter notebook with your colleagues. Maybe you are working on a project where you depend on interactivity to easily present information, or maybe your spooky stakeholders want to see ‘something’ on hover in your carefully crafted plots!, forcing you to avoid a github or nbviewer solution. You have an option for Google Colab notebooks, but for some reason you don’t want to use that either.</description>
     </item>
     
     <item>
       <title>Realtime Sentiment Analysis using Apache Ni-Fi, R and Shiny web app</title>
-      <link>/blog/2018/02/14/realtime-sentiment-analysis-using-apache-ni-fi-r-and-shiny-web-app/</link>
+      <link>/post/realtime-sentiment-analysis-using-apache-ni-fi-r-and-shiny-web-app/</link>
       <pubDate>Wed, 14 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2018/02/14/realtime-sentiment-analysis-using-apache-ni-fi-r-and-shiny-web-app/</guid>
+      <guid>/post/realtime-sentiment-analysis-using-apache-ni-fi-r-and-shiny-web-app/</guid>
       <description>Imagine doing a sentiment analysis on an ongoing event based on realtime Twitter feed. Twitter will give you a lot of tweets, and you can use R, Python or any other language to collect them. But what happens if you want to do that for a really long time with running a R/Python function in the background i.e. how do you handle streaming? The open source world has provided us with a couple of alternatives which can handle terabytes of streaming data.</description>
     </item>
     
     <item>
       <title>Shiny:: select input controlled by previous and next button</title>
-      <link>/blog/2017/10/26/shiny-select-input-controlled-by-previous-and-next-button/</link>
+      <link>/post/shiny-select-input-controlled-by-previous-and-next-button/</link>
       <pubDate>Thu, 26 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2017/10/26/shiny-select-input-controlled-by-previous-and-next-button/</guid>
+      <guid>/post/shiny-select-input-controlled-by-previous-and-next-button/</guid>
       <description>If you ever need to provide a select input in shiny that must be controlled by a previous and a forward button, you may consider using the following piece of code. A possible use case is to allow user to browse through different product with having to click on the dropdown menu and select the desired item. For a long list, this manual process can be tedious and a previous/forward button pair would make more sense.</description>
     </item>
     
     <item>
       <title>Decision diagram for AWS storage and database</title>
-      <link>/blog/2017/10/04/decision-diagram-for-aws-storage-and-database/</link>
+      <link>/post/decision-diagram-for-aws-storage-and-database/</link>
       <pubDate>Wed, 04 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2017/10/04/decision-diagram-for-aws-storage-and-database/</guid>
+      <guid>/post/decision-diagram-for-aws-storage-and-database/</guid>
       <description>As part of getting certified in AWS solution architect - associate, I built a simple logical diagram to help deciding between various storage and database options available in AWS cloud platform. It is current as of September 2017 and correct to the best of my understanding.</description>
     </item>
     
     <item>
       <title>Setting up a cron job in Google App Engine to periodically load data into BigQuery</title>
-      <link>/blog/2017/10/04/setting-up-a-cron-job-in-google-app-engine-to-periodically-load-data-into-bigquery/</link>
+      <link>/post/setting-up-a-cron-job-in-google-app-engine-to-periodically-load-data-into-bigquery/</link>
       <pubDate>Wed, 04 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2017/10/04/setting-up-a-cron-job-in-google-app-engine-to-periodically-load-data-into-bigquery/</guid>
+      <guid>/post/setting-up-a-cron-job-in-google-app-engine-to-periodically-load-data-into-bigquery/</guid>
       <description>It is often important to accept incoming data at regular interval and then update the data warehouse with these new data. A cron job is perfect for this kind of task. I have recently worked to achieve such a task using Google cloud platform and did not want to spin up a single compute engine instance just for this purpose. That would be a complete waste of resource. The other viable alternative is to use a Google App Engine instance and configure a cron job.</description>
     </item>
     
     <item>
       <title>Printing pyramid with R</title>
-      <link>/blog/2017/08/02/printing-pyramid-with-r/</link>
+      <link>/post/printing-pyramid-with-r/</link>
       <pubDate>Wed, 02 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2017/08/02/printing-pyramid-with-r/</guid>
+      <guid>/post/printing-pyramid-with-r/</guid>
       <description>I recently attended an interview where one of the programming questions asked to solve a very basic programming problem. The target of questions like these is not to see if you can write the most efficient code, but to see how you approach the problem. This particular question asked to print a pyramid of stars for a given depth.
 Below is a code to achieve this output in r. This is not the most efficient code, but it shows a simple method.</description>
     </item>
     
     <item>
       <title>Dual y-axis in ggplot</title>
-      <link>/blog/2017/07/27/dual-y-axis-in-ggplot/</link>
+      <link>/post/dual-y-axis-in-ggplot/</link>
       <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2017/07/27/dual-y-axis-in-ggplot/</guid>
+      <guid>/post/dual-y-axis-in-ggplot/</guid>
       <description>Double vertical axis is a fairly common requirement by the analysts. They often use plots with double y-axis to visualize two different variables where x-axis is common to both of them. While ggplot supports most type of graph, this particular kind is not supported. Hadley believes this type of graphs are fundamentally flawed and even went as far as saying he will never build such a graph in ggplot2 package because:</description>
     </item>
     
     <item>
       <title>Gantt chart using Gvis</title>
-      <link>/blog/2017/07/27/gantt-chart-using-gvis/</link>
+      <link>/post/gantt-chart-using-gvis/</link>
       <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2017/07/27/gantt-chart-using-gvis/</guid>
+      <guid>/post/gantt-chart-using-gvis/</guid>
       <description>Gantt chart can be very useful to visualize the occurance of certain events on a timeline. If you need create one programmetically, you can use gvis package which utilizes plotting library from Google.
-# get the data df &amp;lt;- data_get() # make sure you get the data here # convert time to decimal hours, remove if not required df$start.ct &amp;lt;- as.POSIXct(paste(df$`Date Time`, df$start, sep = &amp;quot; &amp;quot;)) df$end.ct &amp;lt;- as.POSIXct(paste(df$`Date Time`, df$end, sep = &amp;quot; &amp;quot;)) df$start.</description>
+# get the data df &amp;lt;- data_get() # make sure you get the data here # convert time to decimal hours, remove if not required df$start.ct &amp;lt;- as.POSIXct(paste(df$`Date Time`, df$start, sep = &amp;quot; &amp;quot;)) df$end.ct &amp;lt;- as.</description>
     </item>
     
   </channel>

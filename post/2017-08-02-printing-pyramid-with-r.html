@@ -1,0 +1,30 @@
+
+
+<p>I recently attended an interview where one of the programming questions asked to solve a very basic programming problem. The target of questions like these is not to see if you can write the most efficient code, but to see how you approach the problem. This particular question asked to print a pyramid of stars for a given depth.</p>
+<p>Below is a code to achieve this output in <code>r</code>. This is not the most efficient code, but it shows a simple method. Since I decided to document interview questions like this, I am posting it here.</p>
+<pre class="r"><code>###########################################
+###    print a pyramid of stars  ##########
+###########################################
+
+# determine the depth of pyramid
+n &lt;- 8
+
+for (i in seq(1,n)){
+  # if the depth is meaningless, return empty space
+  if(n &lt; 1) {
+    print(&#39;&#39;)
+  }else {
+    # otherwise, print the pyramid
+    print(c(rep(&#39;&#39;, n-i),rep(c(&#39;*&#39;,&#39;&#39;), i)))
+      }
+    
+  }</code></pre>
+<pre><code>## [1] &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;*&quot; &quot;&quot; 
+##  [1] &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot; 
+##  [1] &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot; 
+##  [1] &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot; 
+##  [1] &quot;&quot;  &quot;&quot;  &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot; 
+##  [1] &quot;&quot;  &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot; 
+##  [1] &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot; 
+##  [1] &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;  &quot;*&quot; &quot;&quot;</code></pre>
+

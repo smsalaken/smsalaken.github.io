@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shiny on Salekin</title>
+    <link>/tags/shiny/</link>
+    <description>Recent content in Shiny on Salekin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 14 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/shiny/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Realtime Sentiment Analysis using Apache Ni-Fi, R and Shiny web app</title>
+      <link>/post/realtime-sentiment-analysis-using-apache-ni-fi-r-and-shiny-web-app/</link>
+      <pubDate>Wed, 14 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/realtime-sentiment-analysis-using-apache-ni-fi-r-and-shiny-web-app/</guid>
+      <description>Imagine doing a sentiment analysis on an ongoing event based on realtime Twitter feed. Twitter will give you a lot of tweets, and you can use R, Python or any other language to collect them. But what happens if you want to do that for a really long time with running a R/Python function in the background i.e. how do you handle streaming? The open source world has provided us with a couple of alternatives which can handle terabytes of streaming data.</description>
+    </item>
+    
+    <item>
+      <title>Shiny:: select input controlled by previous and next button</title>
+      <link>/post/shiny-select-input-controlled-by-previous-and-next-button/</link>
+      <pubDate>Thu, 26 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/shiny-select-input-controlled-by-previous-and-next-button/</guid>
+      <description>If you ever need to provide a select input in shiny that must be controlled by a previous and a forward button, you may consider using the following piece of code. A possible use case is to allow user to browse through different product with having to click on the dropdown menu and select the desired item. For a long list, this manual process can be tedious and a previous/forward button pair would make more sense.</description>
+    </item>
+    
+  </channel>
+</rss>

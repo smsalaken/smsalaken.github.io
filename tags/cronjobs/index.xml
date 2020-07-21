@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cronjobs on Salekin</title>
+    <link>/tags/cronjobs/</link>
+    <description>Recent content in Cronjobs on Salekin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 04 Oct 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/cronjobs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Setting up a cron job in Google App Engine to periodically load data into BigQuery</title>
+      <link>/post/setting-up-a-cron-job-in-google-app-engine-to-periodically-load-data-into-bigquery/</link>
+      <pubDate>Wed, 04 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/setting-up-a-cron-job-in-google-app-engine-to-periodically-load-data-into-bigquery/</guid>
+      <description>It is often important to accept incoming data at regular interval and then update the data warehouse with these new data. A cron job is perfect for this kind of task. I have recently worked to achieve such a task using Google cloud platform and did not want to spin up a single compute engine instance just for this purpose. That would be a complete waste of resource. The other viable alternative is to use a Google App Engine instance and configure a cron job.</description>
+    </item>
+    
+  </channel>
+</rss>
