@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>career on Salekin</title>
+    <link>/categories/career/</link>
+    <description>Recent content in career on Salekin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 21 Jul 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/career/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Getting started in Data Science - For the people in a completely different domain</title>
+      <link>/post/getting-started-in-data-science-for-the-people-in-a-completely-different-domain/</link>
+      <pubDate>Tue, 21 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/getting-started-in-data-science-for-the-people-in-a-completely-different-domain/</guid>
+      <description>You might be sitting at a pivot point in life where you decided to try something completely new and someone told you data science is interesting. You want to get started but the commonly available material is too technical for you to figure out how to get started. And you might be after some structured steps that will walk you through the basics and set you on the right track.</description>
+    </item>
+    
+  </channel>
+</rss>
