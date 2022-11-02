@@ -3,6 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/experiment-design-for-marketing-campaigns/</loc>
+    <lastmod>2022-11-02T21:14:07+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2022-11-02T21:14:07+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2022-11-02T21:14:07+11:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/categories/aws/</loc>
     <lastmod>2020-07-21T00:00:00+00:00</lastmod>
   </url>
@@ -33,18 +48,8 @@
   </url>
   
   <url>
-    <loc>/post/</loc>
-    <lastmod>2020-07-21T22:01:07+10:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/python/</loc>
     <lastmod>2020-07-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/</loc>
-    <lastmod>2020-07-21T22:01:07+10:00</lastmod>
   </url>
   
   <url>

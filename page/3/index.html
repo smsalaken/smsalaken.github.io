@@ -152,101 +152,19 @@ Built with <a href="https://gohugo.io">Hugo</a> ❤️ <a href="https://github.c
       
       <div class="post-list__item">
         <span class="item__title--big">
-          <a href="/post/shiny-select-input-controlled-by-previous-and-next-button/" >Shiny:: select input controlled by previous and next button</a>
-        </span>
-        <span class="item__date">
-          Oct 26, 2017
-        </span>
-        <span >
-        
-        If you ever need to provide a select input in shiny that must be controlled by a previous and a forward button, you may consider using the following piece of code. A possible use case is to allow user to browse through different product with having to click on the dropdown menu and select the desired item. For a long list, this manual process can be tedious and a previous/forward button pair would make more sense.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/post/shiny-select-input-controlled-by-previous-and-next-button/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/post/decision-diagram-for-aws-storage-and-database/" >Decision diagram for AWS storage and database</a>
-        </span>
-        <span class="item__date">
-          Oct 4, 2017
-        </span>
-        <span >
-        
-        As part of getting certified in AWS solution architect - associate, I built a simple logical diagram to help deciding between various storage and database options available in AWS cloud platform. It is current as of September 2017 and correct to the best of my understanding.
-        
-        </span>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/post/setting-up-a-cron-job-in-google-app-engine-to-periodically-load-data-into-bigquery/" >Setting up a cron job in Google App Engine to periodically load data into BigQuery</a>
-        </span>
-        <span class="item__date">
-          Oct 4, 2017
-        </span>
-        <span >
-        
-        It is often important to accept incoming data at regular interval and then update the data warehouse with these new data. A cron job is perfect for this kind of task. I have recently worked to achieve such a task using Google cloud platform and did not want to spin up a single compute engine instance just for this purpose. That would be a complete waste of resource. The other viable alternative is to use a Google App Engine instance and configure a cron job.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/post/setting-up-a-cron-job-in-google-app-engine-to-periodically-load-data-into-bigquery/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/post/printing-pyramid-with-r/" >Printing pyramid with R</a>
-        </span>
-        <span class="item__date">
-          Aug 2, 2017
-        </span>
-        <span >
-        
-        I recently attended an interview where one of the programming questions asked to solve a very basic programming problem. The target of questions like these is not to see if you can write the most efficient code, but to see how you approach the problem. This particular question asked to print a pyramid of stars for a given depth.
-Below is a code to achieve this output in r. This is not the most efficient code, but it shows a simple method.
-        
-        </span>
-        
-          ... <a class="read-more-symbol" href="/post/printing-pyramid-with-r/">➦</a>
-        
-        </div>
-        
-     
-      
-        
-      
-      <div class="post-list__item">
-        <span class="item__title--big">
-          <a href="/post/dual-y-axis-in-ggplot/" >Dual y-axis in ggplot</a>
+          <a href="/post/gantt-chart-using-gvis/" >Gantt chart using Gvis</a>
         </span>
         <span class="item__date">
           Jul 27, 2017
         </span>
         <span >
         
-        Double vertical axis is a fairly common requirement by the analysts. They often use plots with double y-axis to visualize two different variables where x-axis is common to both of them. While ggplot supports most type of graph, this particular kind is not supported. Hadley believes this type of graphs are fundamentally flawed and even went as far as saying he will never build such a graph in ggplot2 package because:
+        Gantt chart can be very useful to visualize the occurance of certain events on a timeline. If you need create one programmetically, you can use gvis package which utilizes plotting library from Google.
+# get the data df &lt;- data_get() # make sure you get the data here # convert time to decimal hours, remove if not required df$start.ct &lt;- as.POSIXct(paste(df$`Date Time`, df$start, sep = &quot; &quot;)) df$end.ct &lt;- as.
         
         </span>
         
-          ... <a class="read-more-symbol" href="/post/dual-y-axis-in-ggplot/">➦</a>
+          ... <a class="read-more-symbol" href="/post/gantt-chart-using-gvis/">➦</a>
         
         </div>
         
@@ -261,7 +179,7 @@ Below is a code to achieve this output in r. This is not the most efficient code
     </li>
     
     <li class="page-item">
-    <a href="/" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+    <a href="/page/2/" class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
     </li>
     
     
@@ -284,7 +202,7 @@ Below is a code to achieve this output in r. This is not the most efficient code
         
     
     
-    <li class="page-item active"><a class="page-link" href="/page/2/">2</a></li>
+    <li class="page-item"><a class="page-link" href="/page/2/">2</a></li>
     
     
     
@@ -295,11 +213,11 @@ Below is a code to achieve this output in r. This is not the most efficient code
         
     
     
-    <li class="page-item"><a class="page-link" href="/page/3/">3</a></li>
+    <li class="page-item active"><a class="page-link" href="/page/3/">3</a></li>
     
     
-    <li class="page-item">
-    <a href="/page/3/" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+    <li class="page-item disabled">
+    <a href="" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
     </li>
     
     <li class="page-item">
